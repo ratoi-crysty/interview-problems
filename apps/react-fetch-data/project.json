@@ -1,0 +1,84 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-fetch-data/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/react-fetch-data",
+        "index": "apps/react-fetch-data/src/index.html",
+        "baseHref": "/",
+        "main": "apps/react-fetch-data/src/main.tsx",
+        "polyfills": "apps/react-fetch-data/src/polyfills.ts",
+        "tsConfig": "apps/react-fetch-data/tsconfig.app.json",
+        "assets": [
+          "apps/react-fetch-data/src/favicon.ico",
+          "apps/react-fetch-data/src/assets"
+        ],
+        "styles": ["apps/react-fetch-data/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/react-fetch-data/src/environments/environment.ts",
+              "with": "apps/react-fetch-data/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "react-fetch-data:build",
+        "hmr": true,
+        "proxyConfig": "apps/react-fetch-data/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "react-fetch-data:build:development"
+        },
+        "production": {
+          "buildTarget": "react-fetch-data:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-fetch-data/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/react-fetch-data"],
+      "options": {
+        "jestConfig": "apps/react-fetch-data/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
