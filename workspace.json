@@ -4,7 +4,7 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
-    "react-fetch-data": "apps/react-fetch-data",
-    "react-fetch-data-e2e": "apps/react-fetch-data-e2e"
+    "ng-fetch-data": "apps/ng-fetch-data",
+    "react-fetch-data": "apps/react-fetch-data"
   }
 }

@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { Message } from '@interview-problems/api-interfaces';
+import React from 'react';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import { MessagePage } from './pages/message.page';
 
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
-
-  useEffect(() => {
-    fetch('/api')
-      .then((r) => r.json())
-      .then(setMessage);
-  }, []);
-
   return (
-    <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to react-fetch-data!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-          alt="Nx - Smart, Fast and Extensible Build System"
-        />
+    <div>
+      <div>
+        <NavLink to="/message/1">Message 1</NavLink>
+        <NavLink to="/message/2">Message 2</NavLink>
       </div>
-      <div>{m.message}</div>
-    </>
+      <div>
+        <Routes>
+          <Route path="/message/:id" element={<MessagePage />} />
+        </Routes>
+      </div>
+    </div>
   );
 };
 
