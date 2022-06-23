@@ -1,10 +1,12 @@
 import React from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
 import { MessagePage } from './pages/message.page';
+import { Parent } from './test/parent';
 
 export const App = () => {
   return (
     <div>
+      <Parent />
       <div>
         <NavLink to="/message/1">Message 1</NavLink>
         <NavLink to="/message/2">Message 2</NavLink>
